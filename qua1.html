@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Quadratic Equations | Algebra</title>
+<title>Quadratic Equations | Learn</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -53,41 +53,35 @@ body.light .theme-switch .knob{transform:translateX(24px)}
 .page-header h1{font-size:2.2rem;color:var(--text);margin-bottom:.5rem}
 .page-header p{color:var(--text2);font-size:.95rem}
 
-/* Accordion / Study Sections */
-.study-container{max-width:800px;margin:0 auto 5rem;display:flex;flex-direction:column;gap:1.5rem}
+/* Study Blocks */
+.study-container{max-width:800px;margin:0 auto 3rem;display:flex;flex-direction:column;gap:2rem}
 .study-block{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;overflow:hidden}
 .study-title{background:var(--surface2);padding:1.2rem 1.5rem;font-size:1.1rem;font-weight:700;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;color:var(--text)}
 .study-title i{color:var(--red)}
 .study-body{padding:1.5rem}
 
 /* Video Embed */
-.video-container{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;border:1px solid var(--border);margin-bottom:1.5rem;background:#000}
+.video-container{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;border:1px solid var(--border);margin-bottom:1rem;background:#000}
 .video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
 
 /* Notes */
-.notes-box{background:rgba(204,0,0,0.05);border-left:4px solid var(--red);padding:1rem 1.2rem;border-radius:0 8px 8px 0;margin-bottom:1.5rem}
+.notes-box{background:rgba(204,0,0,0.05);border-left:4px solid var(--red);padding:1rem 1.2rem;border-radius:0 8px 8px 0}
 .notes-box h4{font-size:.9rem;color:var(--text);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:1px}
 .notes-box ul{margin-left:1.2rem;color:var(--text2);font-size:.9rem}
 .notes-box li{margin-bottom:.4rem}
 
-/* Questions */
-.question-box{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px dashed var(--border)}
-.question-box:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.q-text{font-weight:600;color:var(--text);margin-bottom:.8rem;font-size:.95rem}
-.q-options{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1rem;font-size:.9rem;color:var(--text2)}
-.toggle-btn{background:transparent;color:var(--red);border:1px solid var(--red);padding:.4rem 1rem;border-radius:6px;font-size:.8rem;font-weight:600;cursor:pointer;transition:var(--transition)}
-.toggle-btn:hover{background:rgba(204,0,0,.1)}
-.solution-box{display:none;margin-top:1rem;padding:1rem;background:var(--surface2);border-radius:8px;font-size:.9rem;color:var(--text2);border-left:3px solid var(--red)}
-.solution-box.show{display:block;animation:fadeIn .3s ease}
-@keyframes fadeIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
-.solution-box strong{color:var(--text)}
+/* Call to Action */
+.cta-container{text-align:center;margin:4rem auto 6rem;padding:3rem 1.5rem;background:linear-gradient(135deg,rgba(204,0,0,0.1),transparent);border:1px solid rgba(204,0,0,0.2);border-radius:16px}
+.cta-container h2{font-size:1.8rem;margin-bottom:1rem;color:var(--text)}
+.cta-container p{color:var(--text2);margin-bottom:2rem;font-size:1rem}
+.btn-practice{display:inline-flex;align-items:center;gap:10px;background:var(--red);color:#fff;padding:1rem 2rem;border-radius:50px;text-decoration:none;font-weight:700;font-size:1.1rem;transition:var(--transition);box-shadow:0 10px 25px var(--red-glow)}
+.btn-practice:hover{background:var(--red-light);transform:translateY(-3px);box-shadow:0 15px 35px var(--red-glow)}
 
 footer{text-align:center;padding:2.5rem 1.5rem;border-top:1px solid var(--border);color:var(--text3);font-size:.85rem}
 footer a{color:var(--text2);text-decoration:none;transition:var(--transition)}footer a:hover{color:var(--red)}
 
 @media(max-width:767px){
   .nav-links{display:none}.hamburger{display:flex}
-  .q-options{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -114,7 +108,7 @@ footer a{color:var(--text2);text-decoration:none;transition:var(--transition)}fo
   <div class="page-header">
     <a href="algebra.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Algebra</a>
     <h1>Quadratic <span class="red-text">Equations</span></h1>
-    <p>Master factorisation, discriminant, and sum/product of roots.</p>
+    <p>Watch the lessons below, then test your knowledge.</p>
   </div>
 
   <div class="container">
@@ -122,7 +116,7 @@ footer a{color:var(--text2);text-decoration:none;transition:var(--transition)}fo
 
       <!-- BLOCK 1: FACTORISATION -->
       <div class="study-block">
-        <div class="study-title"><i class="fas fa-video"></i> 1. Factorisation Method</div>
+        <div class="study-title"><i class="fas fa-play-circle"></i> 1. Factorisation Method</div>
         <div class="study-body">
           <div class="video-container">
             <iframe src="https://www.youtube.com/embed/5lVxcx4ajks" allowfullscreen></iframe>
@@ -130,29 +124,17 @@ footer a{color:var(--text2);text-decoration:none;transition:var(--transition)}fo
           <div class="notes-box">
             <h4>Key Notes</h4>
             <ul>
-              <li>Standard form: \(ax^2 + bx + c = 0\)</li>
-              <li>Find two numbers that multiply to \(ac\) and add to \(b\).</li>
+              <li>Write the equation in standard form: ax² + bx + c = 0</li>
+              <li>Find two numbers that multiply to (a × c) and add up to b.</li>
               <li>Split the middle term and factor by grouping.</li>
             </ul>
-          </div>
-
-          <div class="question-box">
-            <div class="q-text">Q1. Solve \(x^2 - 5x + 6 = 0\)</div>
-            <button class="toggle-btn">Show Solution</button>
-            <div class="solution-box">
-              Find factors of 6 that add to -5: (-2 and -3).<br>
-              \(x^2 - 2x - 3x + 6 = 0\)<br>
-              \(x(x - 2) - 3(x - 2) = 0\)<br>
-              \((x - 2)(x - 3) = 0\)<br>
-              <strong>\(x = 2\) or \(x = 3\)</strong>
-            </div>
           </div>
         </div>
       </div>
 
       <!-- BLOCK 2: TYPES OF ROOTS -->
       <div class="study-block">
-        <div class="study-title"><i class="fas fa-video"></i> 2. Types of Roots (Discriminant)</div>
+        <div class="study-title"><i class="fas fa-play-circle"></i> 2. Types of Roots (Discriminant)</div>
         <div class="study-body">
           <div class="video-container">
             <iframe src="https://www.youtube.com/embed/e-5rC6BJLvE" allowfullscreen></iframe>
@@ -160,58 +142,18 @@ footer a{color:var(--text2);text-decoration:none;transition:var(--transition)}fo
           <div class="notes-box">
             <h4>Key Notes</h4>
             <ul>
-              <li>Discriminant \(D = b^2 - 4ac\).</li>
-              <li>\(D > 0\): Two distinct real roots.</li>
-              <li>\(D = 0\): Two equal real roots.</li>
-              <li>\(D < 0\): No real roots (complex).</li>
+              <li>The Discriminant is D = b² - 4ac.</li>
+              <li>If D > 0: The equation has two distinct real roots.</li>
+              <li>If D = 0: The equation has two equal real roots.</li>
+              <li>If D < 0: The equation has no real roots.</li>
             </ul>
-          </div>
-
-          <div class="question-box">
-            <div class="q-text">Q2. For what values of \(k\) will \(y^2 - (k-2)y + 1 = -2k\) have real equal roots?</div>
-            <div class="q-options">
-              <span>A. 0, 12</span>
-              <span>B. 3, 4</span>
-              <span>C. 0, 3</span>
-              <span>D. -3, 4</span>
-            </div>
-            <button class="toggle-btn">Show Solution</button>
-            <div class="solution-box">
-              Rearrange: \(y^2 - (k-2)y + (1+2k) = 0\)<br>
-              For equal roots, \(b^2 - 4ac = 0\).<br>
-              \((-k+2)^2 - 4(1)(1+2k) = 0\)<br>
-              \(k^2 - 4k + 4 - 4 - 8k = 0\)<br>
-              \(k^2 - 12k = 0\)<br>
-              \(k(k - 12) = 0\)<br>
-              <strong>Answer: A (k = 0 or 12)</strong>
-            </div>
-          </div>
-
-          <div class="question-box">
-            <div class="q-text">Q3. For what values of \(k\) will \(x^2 - (k+2)x + (2k+1) = 0\) have real equal roots?</div>
-            <div class="q-options">
-              <span>A. 0, 4</span>
-              <span>B. 1, 5</span>
-              <span>C. -1, 5</span>
-              <span>D. 5, 7</span>
-            </div>
-            <button class="toggle-btn">Show Solution</button>
-            <div class="solution-box">
-              \(a = 1\), \(b = -(k+2)\), \(c = 2k+1\)<br>
-              \(b^2 - 4ac = 0\)<br>
-              \((k+2)^2 - 4(2k+1) = 0\)<br>
-              \(k^2 + 4k + 4 - 8k - 4 = 0\)<br>
-              \(k^2 - 4k = 0\)<br>
-              \(k(k - 4) = 0\)<br>
-              <strong>Answer: A (k = 0 or 4)</strong>
-            </div>
           </div>
         </div>
       </div>
 
       <!-- BLOCK 3: SUM & PRODUCT -->
       <div class="study-block">
-        <div class="study-title"><i class="fas fa-video"></i> 3. Sum & Product of Roots (Alpha Beta)</div>
+        <div class="study-title"><i class="fas fa-play-circle"></i> 3. Sum and Product of Roots</div>
         <div class="study-body">
           <div class="video-container">
             <iframe src="https://www.youtube.com/embed/V6p-yZwJqIQ" allowfullscreen></iframe>
@@ -219,37 +161,18 @@ footer a{color:var(--text2);text-decoration:none;transition:var(--transition)}fo
           <div class="notes-box">
             <h4>Key Notes</h4>
             <ul>
-              <li>Sum of roots: \(\alpha + \beta = -b/a\)</li>
-              <li>Product of roots: \(\alpha\beta = c/a\)</li>
-              <li>Forming equation: \(x^2 - (\text{sum})x + (\text{product}) = 0\)</li>
+              <li>For an equation ax² + bx + c = 0, let the roots be α and β.</li>
+              <li>Sum of roots (α + β) = -b / a</li>
+              <li>Product of roots (α × β) = c / a</li>
+              <li>To form an equation from roots: x² - (sum)x + (product) = 0</li>
             </ul>
-          </div>
-
-          <div class="question-box">
-            <div class="q-text">Q4. If \(\alpha\) and \(\beta\) are roots of \(2x^2 - 5x + 3 = 0\), find \(\alpha + \beta\).</div>
-            <button class="toggle-btn">Show Solution</button>
-            <div class="solution-box">
-              \(a = 2\), \(b = -5\)<br>
-              \(\alpha + \beta = -b/a = -(-5)/2\)<br>
-              <strong>Answer: 5/2</strong>
-            </div>
-          </div>
-
-          <div class="question-box">
-            <div class="q-text">Q5. Find the product of the roots of \(3x^2 - 4x + 1 = 0\).</div>
-            <button class="toggle-btn">Show Solution</button>
-            <div class="solution-box">
-              \(a = 3\), \(c = 1\)<br>
-              \(\alpha\beta = c/a = 1/3\)<br>
-              <strong>Answer: 1/3</strong>
-            </div>
           </div>
         </div>
       </div>
 
       <!-- BLOCK 4: MORE PRACTICE -->
       <div class="study-block">
-        <div class="study-title"><i class="fas fa-video"></i> 4. More Practice (Forming Equations)</div>
+        <div class="study-title"><i class="fas fa-play-circle"></i> 4. Formation of Quadratic Equations</div>
         <div class="study-body">
           <div class="video-container">
             <iframe src="https://www.youtube.com/embed/2v7PKsWdQ3o" allowfullscreen></iframe>
@@ -257,25 +180,23 @@ footer a{color:var(--text2);text-decoration:none;transition:var(--transition)}fo
           <div class="notes-box">
             <h4>Key Notes</h4>
             <ul>
-              <li>To form an equation from roots \(\alpha\) and \(\beta\): \(x^2 - (\alpha+\beta)x + \alpha\beta = 0\).</li>
+              <li>Use the sum and product formulas to reverse-engineer the equation.</li>
+              <li>Always double-check your signs when expanding.</li>
             </ul>
-          </div>
-
-          <div class="question-box">
-            <div class="q-text">Q6. Form a quadratic equation whose roots are 2 and -3.</div>
-            <button class="toggle-btn">Show Solution</button>
-            <div class="solution-box">
-              Sum = \(2 + (-3) = -1\)<br>
-              Product = \(2 \times (-3) = -6\)<br>
-              Equation: \(x^2 - (\text{sum})x + (\text{product}) = 0\)<br>
-              \(x^2 - (-1)x + (-6) = 0\)<br>
-              <strong>Answer: \(x^2 + x - 6 = 0\)</strong>
-            </div>
           </div>
         </div>
       </div>
 
     </div>
+
+    <!-- SOLVE QUESTIONS CTA -->
+    <div class="cta-container">
+      <h2>Ready to test yourself?</h2>
+      <p>Put your knowledge to the test with 50+ JUPEB-pattern objective questions on Quadratic Equations.</p>
+      <!-- Links to the new questions file -->
+      <a href="qua1questions.html" class="btn-practice">Take Practice Questions <i class="fas fa-arrow-right"></i></a>
+    </div>
+
   </div>
 </main>
 
@@ -295,20 +216,6 @@ function toggleTheme(){setTheme(!document.body.classList.contains('light'))}
 themeToggle.addEventListener('click',toggleTheme);themeToggleMobile.addEventListener('click',()=>{toggleTheme();toggleMenu()});
 if(localStorage.getItem('emmy-theme')==='light'){setTheme(true)}
 window.addEventListener('resize',()=>{if(window.innerWidth>767&&mobileMenu.classList.contains('active'))toggleMenu()});
-
-// Show/Hide Solution Logic
-document.querySelectorAll('.toggle-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    const sol = this.nextElementSibling;
-    if (sol.classList.contains('show')) {
-      sol.classList.remove('show');
-      this.textContent = 'Show Solution';
-    } else {
-      sol.classList.add('show');
-      this.textContent = 'Hide Solution';
-    }
-  });
-});
 </script>
 </body>
 </html>
