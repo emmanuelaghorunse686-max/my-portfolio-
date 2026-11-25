@@ -159,7 +159,12 @@ body.light .theme-switch .knob{transform:translateX(24px)}
 .about-stat{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:.8rem 1.2rem;flex:1;min-width:110px;text-align:center}
 .about-stat .num{font-size:1.4rem;font-weight:800;color:var(--red)}
 .about-stat .lbl{font-size:.7rem;color:var(--text2);text-transform:uppercase;letter-spacing:1px}
-
+   .hero-buttons .btn-secondary:last-child {
+  border-color: var(--red-light);
+}
+.hero-buttons .btn-secondary:last-child:hover {
+  background: rgba(204, 0, 0, 0.15);
+}
 /* ===== TIKTOK ===== */
 .tiktok-section{padding:5rem 1.5rem;background:var(--surface);text-align:center}
 .tiktok-section .section-header{margin-bottom:2rem}
@@ -240,10 +245,13 @@ footer{text-align:center;padding:2.5rem 1.5rem;border-top:1px solid var(--border
       <div class="badge"><span class="pulse"></span> AVAILABLE FOR WORK</div>
       <h1>I'm <span class="red-text">Emmanuel Dickson</span><br>Developer & Content Creator</h1>
       <p>I build websites that work — and videos that make you laugh. Full stack dev by day, funny creator by night. 😂💻</p>
-      <div class="hero-buttons">
-        <a href="#contact" class="btn-primary">Hire Me <i class="fas fa-arrow-right"></i></a>
-        <a href="#work" class="btn-secondary">View Work <i class="fas fa-eye"></i></a>
-      </div>
+ 
+<div class="hero-buttons">
+  <a href="#contact" class="btn-primary">Hire Me <i class="fas fa-arrow-right"></i></a>
+  <a href="#work" class="btn-secondary">View Work <i class="fas fa-eye"></i></a>
+  <a href="studyhub.html" class="btn-secondary"><i class="fas fa-book-open"></i> Study with Me</a>
+</div>
+   
       <div class="social-links">
         <a href="https://tiktok.com/@emmyweb5" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
         <a href="https://instagram.com/yourusername" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -252,6 +260,7 @@ footer{text-align:center;padding:2.5rem 1.5rem;border-top:1px solid var(--border
         <a href="https://wa.me/2347041960860" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
       </div>
     </div>
+
     <div class="hero-images"><div class="image-stack">
       <div class="main-img-wrapper"><img src="emmy.jpg" alt="Emmanuel Dickson" class="main-img"></div>
     </div></div>
