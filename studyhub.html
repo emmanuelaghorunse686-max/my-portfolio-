@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Study Hub | Emmanuel Dickson</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#000000;--surface:#0d0d0d;--surface2:#111111;--text:#ffffff;--text2:#a0a0a0;--text3:#666666;
+  --red:#cc0000;--red-light:#ff4444;--red-glow:rgba(204,0,0,0.3);--border:rgba(255,255,255,0.06);
+  --nav-bg:rgba(0,0,0,0.95);--card-bg:#111111;--shadow:0 20px 50px rgba(0,0,0,0.5);
+  --transition:all .35s cubic-bezier(.25,.1,.25,1);
+}
+body.light{
+  --bg:#ffffff;--surface:#f5f5f7;--surface2:#eeeeee;--text:#1c1c1e;--text2:#6b7280;--text3:#9ca3af;
+  --nav-bg:rgba(255,255,255,0.9);--card-bg:#ffffff;--border:rgba(0,0,0,0.08);--shadow:0 4px 20px rgba(0,0,0,0.08);
+}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;transition:background .4s,color .4s;min-height:100vh}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--red),var(--red-light));border-radius:10px}
+.red-text{color:var(--red)}.container{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+
+/* Navbar */
+.navbar{position:fixed;top:0;width:100%;background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:1000;border-bottom:1px solid var(--border);transition:var(--transition)}
+.nav-container{max-width:1100px;margin:0 auto;padding:.9rem 1.5rem;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.6rem;font-weight:800;letter-spacing:-.02em;color:var(--text);text-decoration:none}.logo .dot{color:var(--red)}
+.nav-links{display:flex;gap:1.6rem;list-style:none;align-items:center}
+.nav-links a{color:var(--text2);text-decoration:none;font-weight:500;font-size:.9rem;transition:var(--transition);display:flex;align-items:center;gap:6px}
+.nav-links a:hover,.nav-links a.active{color:var(--red)}
+
+/* Theme toggle */
+.theme-switch{position:relative;width:52px;height:28px;background:var(--surface2);border:1px solid var(--border);border-radius:50px;cursor:pointer;transition:var(--transition);flex-shrink:0;padding:0}
+.theme-switch .knob{position:absolute;top:2px;left:2px;width:22px;height:22px;background:var(--red);border-radius:50%;transition:transform .3s cubic-bezier(.68,-.55,.265,1.55);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:#fff}
+body.light .theme-switch .knob{transform:translateX(24px)}
+
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;justify-content:center;width:30px;height:24px;cursor:pointer;z-index:1001;position:relative;gap:6px}
+.hamburger span{display:block;height:2px;width:100%;background:var(--text);border-radius:4px;transition:all .4s cubic-bezier(.68,-.55,.265,1.55)}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,6px);background:var(--red)}
+.hamburger.active span:nth-child(2){opacity:0;transform:translateX(-20px)}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-6px);background:var(--red)}
+
+/* Mobile Menu */
+.mobile-menu{position:fixed;top:0;right:-100%;width:100%;max-width:300px;height:100vh;background:var(--nav-bg);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);z-index:999;padding:5rem 2rem 2rem;transition:right .5s cubic-bezier(.77,.2,.05,1);border-left:1px solid var(--border);overflow-y:auto}
+.mobile-menu.active{right:0}
+.mobile-menu ul{list-style:none}
+.mobile-menu li{margin-bottom:1.4rem}
+.mobile-menu a{color:var(--text);text-decoration:none;font-size:1.1rem;font-weight:600;transition:var(--transition);display:flex;align-items:center;gap:1rem}
+.mobile-menu a i{color:var(--red);font-size:1rem;width:22px}
+.mobile-menu a:hover{color:var(--red)}
+.menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);z-index:998;opacity:0;visibility:hidden;transition:all .3s}
+.menu-overlay.active{opacity:1;visibility:visible}
+
+/* Main content */
+.studyhub-main{padding:7rem 1.5rem 4rem;min-height:100vh}
+.section-header{text-align:center;margin-bottom:3rem}
+.section-tag{color:var(--red);text-transform:uppercase;font-size:.7rem;letter-spacing:3px;font-weight:600;display:inline-flex;align-items:center;gap:8px}
+.section-header h1{font-size:2rem;margin-top:.5rem;color:var(--text)}
+.section-header p{color:var(--text2);margin-top:.5rem;font-size:.95rem;max-width:520px;margin-left:auto;margin-right:auto}
+
+/* Course cards grid */
+.course-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;max-width:900px;margin:0 auto}
+.course-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:2rem 1.5rem;text-align:center;transition:var(--transition);position:relative;overflow:hidden;text-decoration:none;color:var(--text);display:flex;flex-direction:column;align-items:center;gap:.8rem}
+.course-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,transparent,var(--red),transparent);transform:translateX(-100%);transition:transform .6s}
+.course-card:not(.locked):hover::before{transform:translateX(100%)}
+.course-card:not(.locked):hover{border-color:var(--red);box-shadow:0 15px 30px rgba(204,0,0,.12);transform:translateY(-5px)}
+.course-card i{font-size:2.2rem;color:var(--red);margin-bottom:.3rem}
+.course-card h3{font-size:1.15rem;font-weight:700;color:var(--text)}
+.course-card p{font-size:.82rem;color:var(--text2);line-height:1.5}
+.course-card .status{font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:.25rem .8rem;border-radius:20px;margin-top:.4rem}
+.course-card .status.open{background:rgba(204,0,0,.15);color:var(--red);border:1px solid rgba(204,0,0,.3)}
+.course-card .status.soon{background:var(--surface2);color:var(--text3);border:1px solid var(--border)}
+.course-card.locked{cursor:not-allowed;opacity:.65}
+.course-card.locked:hover{transform:none;border-color:var(--border);box-shadow:none}
+.course-card .lock-icon{position:absolute;top:1rem;right:1rem;font-size:.9rem;color:var(--text3)}
+
+/* Footer */
+footer{text-align:center;padding:2.5rem 1.5rem;border-top:1px solid var(--border);color:var(--text3);font-size:.85rem;background:var(--bg)}
+footer a{color:var(--text2);text-decoration:none;transition:var(--transition)}
+footer a:hover{color:var(--red)}
+
+@media(max-width:767px){
+  .nav-links{display:none}.hamburger{display:flex}
+  .section-header h1{font-size:1.6rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="logo">Emmy<span class="dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+    <li><a href="studyhub.html" class="active"><i class="fas fa-book-open"></i> Study Hub</a></li>
+    <li><button class="theme-switch" id="themeToggle" aria-label="Toggle theme"><span class="knob"><i class="fas fa-sun"></i></span></button></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</div></nav>
+
+<!-- Mobile Menu -->
+<div class="menu-overlay" id="menuOverlay"></div>
+<div class="mobile-menu" id="mobileMenu"><ul>
+  <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+  <li><a href="studyhub.html"><i class="fas fa-book-open"></i> Study Hub</a></li>
+  <li><button class="theme-switch" id="themeToggleMobile" aria-label="Toggle theme"><span class="knob"><i class="fas fa-sun"></i></span></button></li>
+</ul></div>
+
+<!-- Main -->
+<main class="studyhub-main">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag"><i class="fas fa-book-open"></i> Study Hub</span>
+      <h1>Learn with <span class="red-text">Emmy</span></h1>
+      <p>JUPEB Math — watch, read, practice. No YouTube distractions. Pick a course to begin.</p>
+    </div>
+
+    <div class="course-grid">
+      <!-- MTH001 - UNLOCKED -->
+      <a href="syllabus1.html" class="course-card">
+        <i class="fas fa-calculator"></i>
+        <h3>MTH001</h3>
+        <p>Basic Mathematics — Quadratic Equations, Sets, Radians, Complex Numbers & more</p>
+        <span class="status open">Available</span>
+      </a>
+
+      <!-- MTH002 - LOCKED -->
+      <div class="course-card locked">
+        <i class="fas fa-square-root-variable"></i>
+        <span class="lock-icon"><i class="fas fa-lock"></i></span>
+        <h3>MTH002</h3>
+        <p>Calculus & Advanced Topics</p>
+        <span class="status soon">Coming Soon</span>
+      </div>
+
+      <!-- MTH003 - LOCKED -->
+      <div class="course-card locked">
+        <i class="fas fa-shapes"></i>
+        <span class="lock-icon"><i class="fas fa-lock"></i></span>
+        <h3>MTH003</h3>
+        <p>Statistics & Probability</p>
+        <span class="status soon">Coming Soon</span>
+      </div>
+
+      <!-- MTH004 - LOCKED -->
+      <div class="course-card locked">
+        <i class="fas fa-infinity"></i>
+        <span class="lock-icon"><i class="fas fa-lock"></i></span>
+        <h3>MTH004</h3>
+        <p>Further Mathematics</p>
+        <span class="status soon">Coming Soon</span>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p><i class="far fa-copyright"></i> 2026 Emmanuel Dickson. Built with <i class="fas fa-heart"></i> in Lagos. <a href="index.html">Back to Portfolio</a></p>
+</footer>
+
+<script>
+// Hamburger
+const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobileMenu'),menuOverlay=document.getElementById('menuOverlay');
+function toggleMenu(){hamburger.classList.toggle('active');mobileMenu.classList.toggle('active');menuOverlay.classList.toggle('active');document.body.style.overflow=mobileMenu.classList.contains('active')?'hidden':''}
+hamburger.addEventListener('click',toggleMenu);menuOverlay.addEventListener('click',toggleMenu);
+document.querySelectorAll('.mobile-menu a').forEach(l=>l.addEventListener('click',toggleMenu));
+
+// Theme toggle
+const themeToggle=document.getElementById('themeToggle'),themeToggleMobile=document.getElementById('themeToggleMobile');
+function setTheme(light){
+  document.body.classList.toggle('light',light);
+  const icon=light?'fa-moon':'fa-sun';
+  themeToggle.querySelector('.knob').innerHTML=`<i class="fas ${icon}"></i>`;
+  themeToggleMobile.querySelector('.knob').innerHTML=`<i class="fas ${icon}"></i>`;
+  localStorage.setItem('emmy-theme',light?'light':'dark');
+}
+function toggleTheme(){setTheme(!document.body.classList.contains('light'))}
+themeToggle.addEventListener('click',toggleTheme);
+themeToggleMobile.addEventListener('click',()=>{toggleTheme();toggleMenu()});
+if(localStorage.getItem('emmy-theme')==='light'){setTheme(true)}
+
+// Resize
+window.addEventListener('resize',()=>{if(window.innerWidth>767&&mobileMenu.classList.contains('active'))toggleMenu()});
+</script>
+</body>
+</html>
