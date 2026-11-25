@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Algebra | MTH001</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#000000;--surface:#0d0d0d;--surface2:#111111;--text:#ffffff;--text2:#a0a0a0;--text3:#666666;
+  --red:#cc0000;--red-light:#ff4444;--red-glow:rgba(204,0,0,0.3);--border:rgba(255,255,255,0.06);
+  --nav-bg:rgba(0,0,0,0.95);--card-bg:#111111;--shadow:0 20px 50px rgba(0,0,0,0.5);
+  --transition:all .35s cubic-bezier(.25,.1,.25,1);
+}
+body.light{
+  --bg:#ffffff;--surface:#f5f5f7;--surface2:#eeeeee;--text:#1c1c1e;--text2:#6b7280;--text3:#9ca3af;
+  --nav-bg:rgba(255,255,255,0.9);--card-bg:#ffffff;--border:rgba(0,0,0,0.08);--shadow:0 4px 20px rgba(0,0,0,0.08);
+}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;transition:background .4s,color .4s;min-height:100vh}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--red),var(--red-light));border-radius:10px}
+.red-text{color:var(--red)}.container{max-width:1000px;margin:0 auto;padding:0 1.5rem}
+
+/* Navbar */
+.navbar{position:fixed;top:0;width:100%;background:var(--nav-bg);backdrop-filter:blur(20px);z-index:1000;border-bottom:1px solid var(--border);transition:var(--transition)}
+.nav-container{max-width:1000px;margin:0 auto;padding:.9rem 1.5rem;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.6rem;font-weight:800;color:var(--text);text-decoration:none}.logo .dot{color:var(--red)}
+.nav-links{display:flex;gap:1.6rem;list-style:none;align-items:center}
+.nav-links a{color:var(--text2);text-decoration:none;font-weight:500;font-size:.9rem;transition:var(--transition);display:flex;align-items:center;gap:6px}
+.nav-links a:hover,.nav-links a.active{color:var(--red)}
+
+/* Theme Toggle & Hamburger */
+.theme-switch{position:relative;width:52px;height:28px;background:var(--surface2);border:1px solid var(--border);border-radius:50px;cursor:pointer;transition:var(--transition);padding:0}
+.theme-switch .knob{position:absolute;top:2px;left:2px;width:22px;height:22px;background:var(--red);border-radius:50%;transition:transform .3s;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:#fff}
+body.light .theme-switch .knob{transform:translateX(24px)}
+.hamburger{display:none;flex-direction:column;justify-content:center;width:30px;height:24px;cursor:pointer;z-index:1001;position:relative;gap:6px}
+.hamburger span{display:block;height:2px;width:100%;background:var(--text);border-radius:4px;transition:all .4s}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,6px);background:var(--red)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-6px);background:var(--red)}
+.mobile-menu{position:fixed;top:0;right:-100%;width:100%;max-width:300px;height:100vh;background:var(--nav-bg);backdrop-filter:blur(30px);z-index:999;padding:5rem 2rem 2rem;transition:right .5s;border-left:1px solid var(--border)}
+.mobile-menu.active{right:0}
+.mobile-menu ul{list-style:none}
+.mobile-menu li{margin-bottom:1.4rem}
+.mobile-menu a{color:var(--text);text-decoration:none;font-size:1.1rem;font-weight:600;display:flex;align-items:center;gap:1rem}
+.mobile-menu a i{color:var(--red)}.menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:998;opacity:0;visibility:hidden;transition:all .3s}
+.menu-overlay.active{opacity:1;visibility:visible}
+
+/* Main Content */
+.page-header{padding:7rem 1.5rem 2rem;text-align:center}
+.back-btn{display:inline-flex;align-items:center;gap:8px;color:var(--text2);text-decoration:none;font-size:.9rem;font-weight:600;margin-bottom:1.5rem;transition:var(--transition)}
+.back-btn:hover{color:var(--red);transform:translateX(-5px)}
+.page-header h1{font-size:2rem;color:var(--text);margin-bottom:.5rem}
+.page-header p{color:var(--text2);font-size:.95rem}
+.progress-badge{display:inline-block;background:rgba(204,0,0,.12);color:var(--red);padding:.3rem 1rem;border-radius:20px;font-size:.8rem;font-weight:700;margin-top:1rem;border:1px solid rgba(204,0,0,.3)}
+
+/* Syllabus List */
+.syllabus-list{max-width:800px;margin:0 auto 5rem;display:flex;flex-direction:column;gap:1rem}
+.topic-row{display:flex;align-items:center;justify-content:space-between;background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.5rem;transition:var(--transition)}
+.topic-row:not(.locked):hover{border-color:var(--red);box-shadow:0 10px 20px rgba(204,0,0,.1);transform:translateY(-2px)}
+.topic-left{display:flex;align-items:center;gap:1rem}
+.topic-icon{width:40px;height:40px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:1.1rem;transition:var(--transition)}
+.topic-row:not(.locked) .topic-icon{background:rgba(204,0,0,.1);color:var(--red);border:1px solid rgba(204,0,0,.2)}
+.topic-name{font-size:1.05rem;font-weight:600;color:var(--text)}
+.topic-desc{font-size:.8rem;color:var(--text2)}
+.topic-right{display:flex;align-items:center;gap:1rem}
+.q-count{font-size:.8rem;color:var(--text3);font-weight:600}
+.action-btn{padding:.5rem 1.2rem;border-radius:8px;font-size:.85rem;font-weight:600;text-decoration:none;transition:var(--transition);border:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.btn-learn{background:var(--red);color:#fff}
+.btn-learn:hover{background:var(--red-light);box-shadow:0 5px 15px var(--red-glow)}
+.btn-locked{background:var(--surface2);color:var(--text3);cursor:not-allowed;border:1px solid var(--border)}
+.locked{opacity:.7}
+
+footer{text-align:center;padding:2.5rem 1.5rem;border-top:1px solid var(--border);color:var(--text3);font-size:.85rem}
+footer a{color:var(--text2);text-decoration:none;transition:var(--transition)}footer a:hover{color:var(--red)}
+
+@media(max-width:767px){
+  .nav-links{display:none}.hamburger{display:flex}
+  .topic-row{flex-direction:column;align-items:flex-start;gap:1rem}
+  .topic-right{width:100%;justify-content:space-between}
+  .q-count{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar"><div class="nav-container">
+  <a href="index.html" class="logo">Emmy<span class="dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+    <li><a href="studyhub.html" class="active"><i class="fas fa-book-open"></i> Study Hub</a></li>
+    <li><button class="theme-switch" id="themeToggle"><span class="knob"><i class="fas fa-sun"></i></span></button></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</div></nav>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+<div class="mobile-menu" id="mobileMenu"><ul>
+  <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+  <li><a href="studyhub.html"><i class="fas fa-book-open"></i> Study Hub</a></li>
+  <li><button class="theme-switch" id="themeToggleMobile"><span class="knob"><i class="fas fa-sun"></i></span></button></li>
+</ul></div>
+
+<main>
+  <div class="page-header">
+    <a href="syllabus1.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to MTH001</a>
+    <h1>Algebra <span class="red-text">Topics</span></h1>
+    <p>Master the core of algebraic equations and functions.</p>
+    <div class="progress-badge">1 of 9 Sub-topics Available</div>
+  </div>
+
+  <div class="container">
+    <div class="syllabus-list">
+      
+      <!-- UNLOCKED: Quadratic Equations -->
+      <a href="qua1.html" class="topic-row" style="text-decoration:none; color:inherit;">
+        <div class="topic-left">
+          <div class="topic-icon"><i class="fas fa-superscript"></i></div>
+          <div>
+            <div class="topic-name">Quadratic Equations</div>
+            <div class="topic-desc">Discriminant, Roots, Sum & Product</div>
+          </div>
+        </div>
+        <div class="topic-right">
+          <span class="q-count">10 Questions</span>
+          <span class="action-btn btn-learn">Learn <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- Locked: Polynomials -->
+      <div class="topic-row locked">
+        <div class="topic-left">
+          <div class="topic-icon"><i class="fas fa-lock"></i></div>
+          <div>
+            <div class="topic-name">Polynomials</div>
+            <div class="topic-desc">Remainder & Factor Theorem</div>
+          </div>
+        </div>
+        <div class="topic-right">
+          <span class="q-count">12 Questions</span>
+          <button class="action-btn btn-locked">Locked</button>
+        </div>
+      </div>
+
+      <!-- Locked: Indices & Logarithms -->
+      <div class="topic-row locked">
+        <div class="topic-left">
+          <div class="topic-icon"><i class="fas fa-lock"></i></div>
+          <div>
+            <div class="topic-name">Indices & Logarithms</div>
+            <div class="topic-desc">Laws of indices, Log rules</div>
+          </div>
+        </div>
+        <div class="topic-right">
+          <span class="q-count">15 Questions</span>
+          <button class="action-btn btn-locked">Locked</button>
+        </div>
+      </div>
+
+      <!-- Locked: Sequences & Series -->
+      <div class="topic-row locked">
+        <div class="topic-left">
+          <div class="topic-icon"><i class="fas fa-lock"></i></div>
+          <div>
+            <div class="topic-name">Sequences & Series</div>
+            <div class="topic-desc">Arithmetic (AP) & Geometric (GP)</div>
+          </div>
+        </div>
+        <div class="topic-right">
+          <span class="q-count">14 Questions</span>
+          <button class="action-btn btn-locked">Locked</button>
+        </div>
+      </div>
+
+      <!-- Locked: Binomial Expansion -->
+      <div class="topic-row locked">
+        <div class="topic-left">
+          <div class="topic-icon"><i class="fas fa-lock"></i></div>
+          <div>
+            <div class="topic-name">Binomial Expansion</div>
+            <div class="topic-desc">Pascal's Triangle, General Term</div>
+          </div>
+        </div>
+        <div class="topic-right">
+          <span class="q-count">8 Questions</span>
+          <button class="action-btn btn-locked">Locked</button>
+        </div>
+      </div>
+
+      <!-- Locked: Inequalities -->
+      <div class="topic-row locked">
+        <div class="topic-left">
+          <div class="topic-icon"><i class="fas fa-lock"></i></div>
+          <div>
+            <div class="topic-name">Inequalities</div>
+            <div class="topic-desc">Absolute values, Quadratic inequalities</div>
+          </div>
+        </div>
+        <div class="topic-right">
+          <span class="q-count">10 Questions</span>
+          <button class="action-btn btn-locked">Locked</button>
+        </div>
+      </div>
+
+      <!-- Locked: Matrices -->
+      <div class="topic-row locked">
+        <div class="topic-left">
+          <div class="topic-icon"><i class="fas fa-lock"></i></div>
+          <div>
+            <div class="topic-name">Matrices</div>
+            <div class="topic-desc">Operations, Determinants, Inverses</div>
+          </div>
+        </div>
+        <div class="topic-right">
+          <span class="q-count">11 Questions</span>
+          <button class="action-btn btn-locked">Locked</button>
+        </div>
+      </div>
+
+      <!-- Locked: Binary Operations -->
+      <div class="topic-row locked">
+        <div class="topic-left">
+          <div class="topic-icon"><i class="fas fa-lock"></i></div>
+          <div>
+            <div class="topic-name">Binary Operations</div>
+            <div class="topic-desc">Closure, Commutative, Associative</div>
+          </div>
+        </div>
+        <div class="topic-right">
+          <span class="q-count">6 Questions</span>
+          <button class="action-btn btn-locked">Locked</button>
+        </div>
+      </div>
+
+      <!-- Locked: Functions & Inverse Functions -->
+      <div class="topic-row locked">
+        <div class="topic-left">
+          <div class="topic-icon"><i class="fas fa-lock"></i></div>
+          <div>
+            <div class="topic-name">Functions & Inverses</div>
+            <div class="topic-desc">Domain, Range, f(x) notation</div>
+          </div>
+        </div>
+        <div class="topic-right">
+          <span class="q-count">4 Questions</span>
+          <button class="action-btn btn-locked">Locked</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p><i class="far fa-copyright"></i> 2026 Emmanuel Dickson. Built with <i class="fas fa-heart"></i> in Lagos. <a href="index.html">Back to Portfolio</a></p>
+</footer>
+
+<script>
+// Hamburger & Theme Toggle Logic
+const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobileMenu'),menuOverlay=document.getElementById('menuOverlay');
+function toggleMenu(){hamburger.classList.toggle('active');mobileMenu.classList.toggle('active');menuOverlay.classList.toggle('active');document.body.style.overflow=mobileMenu.classList.contains('active')?'hidden':''}
+hamburger.addEventListener('click',toggleMenu);menuOverlay.addEventListener('click',toggleMenu);
+document.querySelectorAll('.mobile-menu a').forEach(l=>l.addEventListener('click',toggleMenu));
+const themeToggle=document.getElementById('themeToggle'),themeToggleMobile=document.getElementById('themeToggleMobile');
+function setTheme(light){document.body.classList.toggle('light',light);const icon=light?'moon':'sun';themeToggle.querySelector('.knob').innerHTML=`<i class="fas fa-${icon}"></i>`;themeToggleMobile.querySelector('.knob').innerHTML=`<i class="fas fa-${icon}"></i>`;localStorage.setItem('emmy-theme',light?'light':'dark')}
+function toggleTheme(){setTheme(!document.body.classList.contains('light'))}
+themeToggle.addEventListener('click',toggleTheme);themeToggleMobile.addEventListener('click',()=>{toggleTheme();toggleMenu()});
+if(localStorage.getItem('emmy-theme')==='light'){setTheme(true)}
+window.addEventListener('resize',()=>{if(window.innerWidth>767&&mobileMenu.classList.contains('active'))toggleMenu()});
+</script>
+</body>
+</html>
