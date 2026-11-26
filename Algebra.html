@@ -1,4 +1,5 @@
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -56,11 +57,10 @@ body.light .theme-switch .knob{transform:translateX(24px)}
 
 /* Syllabus List */
 .syllabus-list{max-width:800px;margin:0 auto 5rem;display:flex;flex-direction:column;gap:1rem}
-.topic-row{display:flex;align-items:center;justify-content:space-between;background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.5rem;transition:var(--transition)}
-.topic-row:not(.locked):hover{border-color:var(--red);box-shadow:0 10px 20px rgba(204,0,0,.1);transform:translateY(-2px)}
+.topic-row{display:flex;align-items:center;justify-content:space-between;background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.5rem;transition:var(--transition);text-decoration:none;color:inherit}
+.topic-row:hover{border-color:var(--red);box-shadow:0 10px 20px rgba(204,0,0,.1);transform:translateY(-2px)}
 .topic-left{display:flex;align-items:center;gap:1rem}
-.topic-icon{width:40px;height:40px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:1.1rem;transition:var(--transition)}
-.topic-row:not(.locked) .topic-icon{background:rgba(204,0,0,.1);color:var(--red);border:1px solid rgba(204,0,0,.2)}
+.topic-icon{width:40px;height:40px;border-radius:50%;background:rgba(204,0,0,.1);display:flex;align-items:center;justify-content:center;color:var(--red);border:1px solid rgba(204,0,0,.2);font-size:1.1rem;transition:var(--transition)}
 .topic-name{font-size:1.05rem;font-weight:600;color:var(--text)}
 .topic-desc{font-size:.8rem;color:var(--text2)}
 .topic-right{display:flex;align-items:center;gap:1rem}
@@ -68,8 +68,6 @@ body.light .theme-switch .knob{transform:translateX(24px)}
 .action-btn{padding:.5rem 1.2rem;border-radius:8px;font-size:.85rem;font-weight:600;text-decoration:none;transition:var(--transition);border:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
 .btn-learn{background:var(--red);color:#fff}
 .btn-learn:hover{background:var(--red-light);box-shadow:0 5px 15px var(--red-glow)}
-.btn-locked{background:var(--surface2);color:var(--text3);cursor:not-allowed;border:1px solid var(--border)}
-.locked{opacity:.7}
 
 footer{text-align:center;padding:2.5rem 1.5rem;border-top:1px solid var(--border);color:var(--text3);font-size:.85rem}
 footer a{color:var(--text2);text-decoration:none;transition:var(--transition)}footer a:hover{color:var(--red)}
@@ -106,14 +104,14 @@ footer a{color:var(--text2);text-decoration:none;transition:var(--transition)}fo
     <a href="syllabus1.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to MTH001</a>
     <h1>Algebra <span class="red-text">Topics</span></h1>
     <p>Master the core of algebraic equations and functions.</p>
-    <div class="progress-badge">2 of 9 Sub-topics Available</div>
+    <div class="progress-badge">9 of 9 Sub-topics Available</div>
   </div>
 
   <div class="container">
     <div class="syllabus-list">
       
-      <!-- UNLOCKED: Quadratic Equations -->
-      <a href="qua1.html" class="topic-row" style="text-decoration:none; color:inherit;">
+      <!-- Quadratic Equations -->
+      <a href="qua1.html" class="topic-row">
         <div class="topic-left">
           <div class="topic-icon"><i class="fas fa-superscript"></i></div>
           <div>
@@ -127,8 +125,8 @@ footer a{color:var(--text2);text-decoration:none;transition:var(--transition)}fo
         </div>
       </a>
 
-      <!-- UNLOCKED: Polynomials -->
-      <a href="poli1.html" class="topic-row" style="text-decoration:none; color:inherit;">
+      <!-- Polynomials -->
+      <a href="poli1.html" class="topic-row">
         <div class="topic-left">
           <div class="topic-icon"><i class="fas fa-divide"></i></div>
           <div>
@@ -142,10 +140,10 @@ footer a{color:var(--text2);text-decoration:none;transition:var(--transition)}fo
         </div>
       </a>
 
-      <!-- Locked: Indices & Logarithms -->
-      <div class="topic-row locked">
+      <!-- Indices & Logarithms -->
+      <a href="indices1.html" class="topic-row">
         <div class="topic-left">
-          <div class="topic-icon"><i class="fas fa-lock"></i></div>
+          <div class="topic-icon"><i class="fas fa-calculator"></i></div>
           <div>
             <div class="topic-name">Indices & Logarithms</div>
             <div class="topic-desc">Laws of indices, Log rules</div>
@@ -153,14 +151,14 @@ footer a{color:var(--text2);text-decoration:none;transition:var(--transition)}fo
         </div>
         <div class="topic-right">
           <span class="q-count">15 Questions</span>
-          <button class="action-btn btn-locked">Locked</button>
+          <span class="action-btn btn-learn">Learn <i class="fas fa-arrow-right"></i></span>
         </div>
-      </div>
+      </a>
 
-      <!-- Locked: Sequences & Series -->
-      <div class="topic-row locked">
+      <!-- Sequences & Series -->
+      <a href="sequences1.html" class="topic-row">
         <div class="topic-left">
-          <div class="topic-icon"><i class="fas fa-lock"></i></div>
+          <div class="topic-icon"><i class="fas fa-list-ol"></i></div>
           <div>
             <div class="topic-name">Sequences & Series</div>
             <div class="topic-desc">Arithmetic (AP) & Geometric (GP)</div>
@@ -168,14 +166,14 @@ footer a{color:var(--text2);text-decoration:none;transition:var(--transition)}fo
         </div>
         <div class="topic-right">
           <span class="q-count">14 Questions</span>
-          <button class="action-btn btn-locked">Locked</button>
+          <span class="action-btn btn-learn">Learn <i class="fas fa-arrow-right"></i></span>
         </div>
-      </div>
+      </a>
 
-      <!-- Locked: Binomial Expansion -->
-      <div class="topic-row locked">
+      <!-- Binomial Expansion -->
+      <a href="binomial1.html" class="topic-row">
         <div class="topic-left">
-          <div class="topic-icon"><i class="fas fa-lock"></i></div>
+          <div class="topic-icon"><i class="fas fa-expand-arrows-alt"></i></div>
           <div>
             <div class="topic-name">Binomial Expansion</div>
             <div class="topic-desc">Pascal's Triangle, General Term</div>
@@ -183,14 +181,14 @@ footer a{color:var(--text2);text-decoration:none;transition:var(--transition)}fo
         </div>
         <div class="topic-right">
           <span class="q-count">8 Questions</span>
-          <button class="action-btn btn-locked">Locked</button>
+          <span class="action-btn btn-learn">Learn <i class="fas fa-arrow-right"></i></span>
         </div>
-      </div>
+      </a>
 
-      <!-- Locked: Inequalities -->
-      <div class="topic-row locked">
+      <!-- Inequalities -->
+      <a href="inequalities1.html" class="topic-row">
         <div class="topic-left">
-          <div class="topic-icon"><i class="fas fa-lock"></i></div>
+          <div class="topic-icon"><i class="fas fa-less-than"></i></div>
           <div>
             <div class="topic-name">Inequalities</div>
             <div class="topic-desc">Absolute values, Quadratic inequalities</div>
@@ -198,14 +196,14 @@ footer a{color:var(--text2);text-decoration:none;transition:var(--transition)}fo
         </div>
         <div class="topic-right">
           <span class="q-count">10 Questions</span>
-          <button class="action-btn btn-locked">Locked</button>
+          <span class="action-btn btn-learn">Learn <i class="fas fa-arrow-right"></i></span>
         </div>
-      </div>
+      </a>
 
-      <!-- Locked: Matrices -->
-      <div class="topic-row locked">
+      <!-- Matrices -->
+      <a href="matrices1.html" class="topic-row">
         <div class="topic-left">
-          <div class="topic-icon"><i class="fas fa-lock"></i></div>
+          <div class="topic-icon"><i class="fas fa-border-all"></i></div>
           <div>
             <div class="topic-name">Matrices</div>
             <div class="topic-desc">Operations, Determinants, Inverses</div>
@@ -213,14 +211,14 @@ footer a{color:var(--text2);text-decoration:none;transition:var(--transition)}fo
         </div>
         <div class="topic-right">
           <span class="q-count">11 Questions</span>
-          <button class="action-btn btn-locked">Locked</button>
+          <span class="action-btn btn-learn">Learn <i class="fas fa-arrow-right"></i></span>
         </div>
-      </div>
+      </a>
 
-      <!-- Locked: Binary Operations -->
-      <div class="topic-row locked">
+      <!-- Binary Operations -->
+      <a href="binary1.html" class="topic-row">
         <div class="topic-left">
-          <div class="topic-icon"><i class="fas fa-lock"></i></div>
+          <div class="topic-icon"><i class="fas fa-plus-minus"></i></div>
           <div>
             <div class="topic-name">Binary Operations</div>
             <div class="topic-desc">Closure, Commutative, Associative</div>
@@ -228,14 +226,14 @@ footer a{color:var(--text2);text-decoration:none;transition:var(--transition)}fo
         </div>
         <div class="topic-right">
           <span class="q-count">6 Questions</span>
-          <button class="action-btn btn-locked">Locked</button>
+          <span class="action-btn btn-learn">Learn <i class="fas fa-arrow-right"></i></span>
         </div>
-      </div>
+      </a>
 
-      <!-- Locked: Functions & Inverse Functions -->
-      <div class="topic-row locked">
+      <!-- Functions & Inverse Functions -->
+      <a href="functions1.html" class="topic-row">
         <div class="topic-left">
-          <div class="topic-icon"><i class="fas fa-lock"></i></div>
+          <div class="topic-icon"><i class="fas fa-function"></i></div>
           <div>
             <div class="topic-name">Functions & Inverses</div>
             <div class="topic-desc">Domain, Range, f(x) notation</div>
@@ -243,9 +241,9 @@ footer a{color:var(--text2);text-decoration:none;transition:var(--transition)}fo
         </div>
         <div class="topic-right">
           <span class="q-count">4 Questions</span>
-          <button class="action-btn btn-locked">Locked</button>
+          <span class="action-btn btn-learn">Learn <i class="fas fa-arrow-right"></i></span>
         </div>
-      </div>
+      </a>
 
     </div>
   </div>
